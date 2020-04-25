@@ -13,5 +13,5 @@ def my_response(code, data, msg):
     return {
         'code': code,
         'data': data,
-        'msg': my_msg(msg),
+        'msg': msg,
     }

@@ -9,10 +9,12 @@ socketIO = SocketIO()
 
 # redis相关key
 REDIS = config['development'].SESSION_REDIS
-USER_MAP_HOME = 'user_map_home'
-USER_MAP_ROOM = 'user_map_room'
-ROOM_MAP = 'room_map'
-ROOM_SET = 'room_set_%s'
+USER_MAP = 'user_map'
+FILE_DESC = 'file_desc_%s'
+FILE_DATA = 'file_data_%s_%s'
+FILE_LEN = 'file_len_%s_%s'
+FILE_DESC_EX = 10 * 3600
+FILE_DATA_EX = 10
 
 
 # 初始化程序实例
@@ -26,9 +28,7 @@ def create_app():
     # 注册蓝图
     from app.httpServer.index import http
     from app.wsServer.home import wsHome
-    from app.wsServer.room import wsRoom
     app.register_blueprint(http)
     app.register_blueprint(wsHome)
-    app.register_blueprint(wsRoom)
 
     return app

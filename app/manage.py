@@ -14,7 +14,7 @@ def print_request_info():
     url = request.path.split('/')
     if len(url) >= 2:
         if url[1] != 'login':
-            if 'open_id' not in session:
+            if 'sub' not in session:
                 return redirect(url_for('http.login'))
 
 

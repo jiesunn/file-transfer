@@ -1,5 +1,5 @@
 # 基础镜像
-FROM python:3.7.4-alpine
+FROM python:3.6.8-alpine
 LABEL maintainer="lilijie@corp.netease.com"
 
 # 创建所需目录
