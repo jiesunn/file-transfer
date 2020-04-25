@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css') }}"/>
+    <script src="{{ url_for('static',filename='js/home.js') }}"></script>
+</head>
+
+<body>
+<div id="header">发起邀请->接受邀请->进入房间</div>
+<div id="show"></div>
+<div id="bottom">
+    <input id="open_id" placeholder="请输入 open_id 建立 WebRTC 连接">
+    <button id="submit">发起邀请</button>
+</div>
+</body>
+</html>

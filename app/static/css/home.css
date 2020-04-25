@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+}
+
+input {
+    width: 250px;
+}
+
+li {
+    font-size: 12px;
+    text-align: left;
+    margin-left: 10px;
+    /**list-style-type: none;**/
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+#show, #header, #bottom {
+    width: 600px;
+    background-color: #FFDEAD;
+    padding: 15px
+}
+
+#show {
+    background-color: #FFEFD5;
+    height: 600px;
+    overflow-y:scroll
+}
+
+#bottom {
+    height: 30px;
+}
+
+#header {
+    height: 30px;
+    font-weight: bold;
+}

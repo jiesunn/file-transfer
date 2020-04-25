@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文件传输</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/room.css') }}"/>
+</head>
+<body>
+<div id="header">传输过程中不要刷新或关闭该页面</div>
+<div id="show"></div>
+<div id="bottom">
+    <input type="file" id="fileIpt" class="fileIpt">
+    <button id="sendFileBtn" class="sendFileBtn" disabled>发送文件</button>
+</div>
+</body>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+<script src="{{ url_for('static',filename='js/room.js') }}"></script>
+</html>
