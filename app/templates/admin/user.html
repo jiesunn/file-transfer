@@ -1,0 +1,123 @@
+{% extends "base/admin_base.html" %}
+
+{% block more_style %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin/user.css') }}"/>
+{% endblock %}
+
+{% block more_script %}
+    <script src="{{ url_for('static',filename='js/admin/user.js') }}"></script>
+    <script>
+        $(function () {
+            //分页
+            let laypage = layui.laypage;
+            laypage.render({
+                elem: 'page',
+                curr: {{ page }},
+                count: {{ count }},
+                limit: 10,
+                jump: function (obj, first) {
+                    if (!first) {
+                        location.href = "?page=" + obj.curr;
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="layui-anim layui-anim-scaleSpring">
+        <div class="container" style="border-bottom: 0; width: 80%;">
+            <h1>
+                <span>FILE TRANSFER ADMIN - 用户管理</span>
+            </h1>
+        </div>
+        <div class="container" style="width: 80%">
+            {% if userList %}
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <select name="type" lay-verify="required">
+                                <option value=""></option>
+                                <option value="pid" {% if type == 'pid' %}selected{% endif %}>权限</option>
+                                <option value="sub" {% if type == 'sub' %}selected{% endif %}>用户名</option>
+                                <option value="phone" {% if type == 'phone' %}selected{% endif %}>手机号</option>
+                                <option value="email" {% if type == 'email' %}selected{% endif %}>邮箱地址</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <input name="content" required lay-verify="required" placeholder="请输入您要查询的内容"
+                                   autocomplete="off" class="layui-input" value="{{ content }}">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <button class="layui-btn" lay-submit lay-filter="query-submit">查 询</button>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+            <table class="layui-table" lay-even lay-skin="nob">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th>邮箱地址</th>
+                    <th>自我介绍</th>
+                    <th>创建时间</th>
+                    <th style="text-align: center">管理员权限</th>
+                    <th style="text-align: center">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if userList %}
+                    {% for user_item in userList %}
+                        <tr>
+                            <td id="id-{{ user_item.id }}">{{ user_item.id }}</td>
+                            <td id="sub-{{ user_item.id }}">{{ user_item.sub }}</td>
+                            <td>
+                                <form class="layui-form">
+                                    <input id="phone-{{ user_item.id }}" class="layui-input disabled"
+                                           value="{{ user_item.phone }}" lay-verify="phone" disabled>
+                                </form>
+                            </td>
+                            <td>
+                                <form class="layui-form">
+                                    <input id="email-{{ user_item.id }}" class="layui-input disabled"
+                                           value="{{ user_item.email }}" lay-verify="email" disabled>
+                                </form>
+                            </td>
+                            <td>{{ user_item.intro }}</td>
+                            <td>{{ user_item.create_time }}</td>
+                            <td style="text-align: center">
+                                <form class="layui-form">
+                                    {% if user_item.pid == 2 %}
+                                        {% set checked="checked" %}
+                                    {% endif %}
+                                    <input id="pid-{{ user_item.id }}" type="checkbox" lay-skin="switch"
+                                           lay-filter="pid-switch" lay-text="ON|OFF" {{ checked }}>
+                                </form>
+                            </td>
+                            <td style="text-align: center">
+                                <button class="layui-btn layui-btn-xs layui-btn-normal update"
+                                        id="update-{{ user_item.id }}">更改
+                                </button>
+                                <button class="layui-btn layui-btn-xs layui-btn-normal submit"
+                                        id="submit-{{ user_item.id }}" style="display: none">确定
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="tips">
+                {% if userList %}
+                    <div id="page"></div>
+                {% else %}
+                    数据为空
+                    <button class="layui-btn layui-btn-xs layui-btn-normal" onclick="location.href='/admin'">返回</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

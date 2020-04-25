@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    background: #F5F5F5;
+}
+
+.content {
+    margin: 80px auto;
+}
+
+.layui-nav {
+    padding: 0 60px 0 20px;
+}
+
+.logo {
+    margin: 15px 20px 15px 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+.logo img {
+    height: 31px;
+}
+
+.tips {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px #CCCCCC solid;
+    color: #C0C0C0;
+}
+
+.container {
+    padding: 30px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 50%;
+}
+
+h1 {
+    text-align: center;
+    color: #696969;
+    margin: 0;
+    line-height: 1;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 20px
+}
+
+h1 span {
+    display: inline-block;
+    position: relative;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 20px;
+    text-align: center;
+    color: #969696;
+    margin-top: 10px;
+}
+
+.disabled {
+    border-style: none;
+    background: none;
+    padding-left: 0;
+}

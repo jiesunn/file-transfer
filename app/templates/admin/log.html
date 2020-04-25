@@ -1,0 +1,111 @@
+{% extends "base/admin_base.html" %}
+
+{% block more_style %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin/log.css') }}"/>
+{% endblock %}
+
+{% block more_script %}
+    <script src="{{ url_for('static',filename='js/admin/log.js') }}"></script>
+    <script>
+        layui.use(['laypage'], function () {
+            let laypage = layui.laypage;
+
+            //分页
+            laypage.render({
+                elem: 'page',
+                curr: {{ page }},
+                count: {{ count }},
+                limit: 10,
+                jump: function (obj, first) {
+                    if (!first) {
+                        location.href = "/admin/log?page=" + obj.curr;
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="layui-anim layui-anim-scaleSpring">
+        <div class="container" style="border-bottom: 0; width: 80%;">
+            <h1>
+                <span>FILE TRANSFER ADMIN - 请求日志</span>
+            </h1>
+        </div>
+        <div class="container" style="width: 80%">
+            {% if logList %}
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <select name="type" lay-verify="required">
+                                <option value=""></option>
+                                <option value="level" {% if type == 'level' %}selected{% endif %}>日志等级</option>
+                                <option value="code" {% if type == 'code' %}selected{% endif %}>返回码</option>
+                                <option value="method" {% if type == 'method' %}selected{% endif %}>请求方法</option>
+                            </select>
+                        </div>
+                        <div class="layui-input-inline">
+                            <input name="content" required lay-verify="required" placeholder="请输入您要查询的内容"
+                                   autocomplete="off" class="layui-input" value="{{ content }}">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            <button class="layui-btn" lay-submit lay-filter="query-submit">查 询</button>
+                        </div>
+                    </div>
+                </form>
+            {% endif %}
+            <table class="layui-table" lay-even lay-skin="nob">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>日志等级</th>
+                    <th>返回码</th>
+                    <th>请求方法</th>
+                    <th>请求地址</th>
+                    <th>请求参数</th>
+                    <th>返回参数</th>
+                    <th>用户IP</th>
+                    <th>请求时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if logList %}
+                    {% for log_item in logList %}
+                        <tr>
+                            <td>{{ log_item.id }}</td>
+                            {% if log_item.level == 'ERROE' %}
+                                <td><span class="layui-badge">{{ log_item.level }}</span></td>
+                            {% else %}
+                                <td><span class="layui-badge layui-bg-green">{{ log_item.level }}</span></td>
+                            {% endif %}
+                            {% if log_item.code >= 400 and log_item.code < 600 %}
+                                <td><span class="layui-badge">{{ log_item.code }}</span></td>
+                            {% elif log_item.code >= 200 and log_item.code < 300 %}
+                                <td><span class="layui-badge layui-bg-green">{{ log_item.code }}</span></td>
+                            {% else %}
+                                <td><span class="layui-badge layui-bg-blue">{{ log_item.code }}</span></td>
+                            {% endif %}
+                            <td>{{ log_item.method }}</td>
+                            <td>{{ log_item.path }}</td>
+                            <td>{{ log_item.params }}</td>
+                            <td>{{ log_item.response }}</td>
+                            <td>{{ log_item.user_ip }}</td>
+                            <td>{{ log_item.request_time }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+            <div class="tips" style="text-align: center">
+                {% if logList %}
+                    <div id="page"></div>
+                {% else %}
+                    数据为空
+                    <button class="layui-btn layui-btn-xs layui-btn-normal" onclick="location.href='/admin/log'">返回
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

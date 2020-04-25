@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/fav.ico') }}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/fav.ico') }}" type="image/x-icon"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layui/css/layui.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}"/>
+    {% block more_style %}{% endblock %}
+</head>
+
+<body>
+<ul class="layui-nav" lay-filter="">
+    <a class="logo" href="/">
+        <img src="{{ url_for('static', filename='img/fav.ico') }}" alt="文件传输系统">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="文件传输系统">
+    </a>
+    {% block nav %}{% endblock %}
+    <li class="layui-nav-item" style="float: right">
+        <a href="javascript:;">
+            <i class="layui-icon layui-icon-face-smile"></i>
+            <span style="margin-left: 5px">{{ user.sub }}</span>
+        </a>
+        <dl class="layui-nav-child">
+            <dd>
+                <a href="/login/out">
+                    <i class="layui-icon layui-icon-logout"></i>
+                    <span style="margin-left: 5px">登出</span>
+                </a>
+            </dd>
+        </dl>
+    </li>
+</ul>
+
+<div class="content">
+    <div class="info" id="info" style="display: none;">
+        <div class="msg" id="msg"></div>
+    </div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+
+<script src="{{ url_for('static', filename='js/lib/jquery-1.10.2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='layui/layui.all.js') }}"></script>
+<script src="{{ url_for('static', filename='js/base.js') }}"></script>
+{% block base_script %}{% endblock %}
+{% block more_script %}{% endblock %}
+
+</html>

@@ -1,0 +1,41 @@
+{% extends "base/user_base.html" %}
+
+{% block more_style %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user/file.css') }}"/>
+{% endblock %}
+
+{% block more_script %}
+    <script type="text/javascript" src="//cdn.bootcss.com/socket.io/1.5.1/socket.io.min.js"></script>
+    <script src="{{ url_for('static',filename='js/user/file.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="layui-anim layui-anim-scaleSpring">
+        <div id="send">
+            <div class="header">发送文件</div>
+            <div class="show"></div>
+            <div class="bottom">
+                <input type="file" id="fileIpt" style="display: none">
+                <button class="btn fileinput-button" id="fileIptMine">上传文件</button>
+                <span id="filename" class="showFileName">未选择文件</span>
+                <input class="receiverIpt" id="receiverIpt" placeholder="请输入用户名">
+                <button class="btn sendFileBtn" id="sendFileBtn">发送文件</button>
+            </div>
+        </div>
+
+        <div id="receive">
+            <div class="header">接收文件</div>
+            <div class="show">
+                {#                <li id="file_5AEC8JVA-MZT-lilijie">#}
+                {#                    <div class="layui-progress">#}
+                {#                        <div class="layui-progress-bar layui-bg-green" lay-percent="50%"></div>#}
+                {#                    </div>#}
+                {#                    <div class="title">软件1604班_李莉婕_16408500326_嵌入式软件...</div>#}
+                {#                    <div class="desc">TO: lilijie | SIZE: 14.81MB</div>#}
+                {#                    <div class="file-msg">等待回应...</div>#}
+                {#                </li>#}
+            </div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+{% endblock %}

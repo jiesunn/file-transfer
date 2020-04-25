@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+    文件传输系统后台管理 ｜ {{ title }}
+{% endblock %}
+
+{% block base_script %}
+    <script>
+        $(function () {
+            let title = '{{ title }}'
+            if (title === '用户管理') {
+                $('#nav-user').addClass("layui-this")
+            } else if (title === '请求日志') {
+                $('#nav-log').addClass("layui-this")
+            } else if (title === '传输监控') {
+                $('#nav-monitor').addClass("layui-this")
+            }
+        });
+    </script>
+{% endblock %}
+
+{% block nav %}
+    <li id="nav-user" class="layui-nav-item">
+        <a href="/admin/user">
+            <i class="layui-icon layui-icon-user"></i>
+            <span style="margin-left: 5px">用户管理</span>
+        </a>
+    </li>
+    <li id="nav-log" class="layui-nav-item">
+        <a href="/admin/log">
+            <i class="layui-icon layui-icon-tips"></i>
+            <span style="margin-left: 5px">请求日志</span>
+        </a>
+    </li>
+    <li id="nav-monitor" class="layui-nav-item">
+        <a href="/admin/monitor">
+            <i class="layui-icon layui-icon-console"></i>
+            <span style="margin-left: 5px">传输监控</span>
+        </a>
+    </li>
+{% endblock %}

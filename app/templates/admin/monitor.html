@@ -1,0 +1,39 @@
+{% extends "base/admin_base.html" %}
+
+{% block more_style %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/admin/monitor.css') }}"/>
+{% endblock %}
+
+{% block more_script %}
+    <script src="{{ url_for('static',filename='js/admin/monitor.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="layui-anim layui-anim-scaleSpring">
+        <div class="container" style="border-bottom: 0; width: 80%;">
+            <h1>
+                <span>FILE TRANSFER ADMIN - 传输监控</span>
+            </h1>
+        </div>
+        <div class="container" style="width: 80%">
+            <span class="layui-badge layui-bg-blue" id="time"></span>
+            <span class="layui-badge layui-bg-blue" id="clock">还剩 5s 刷新</span>
+            <table class="layui-table" lay-even lay-skin="nob">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>文件名</th>
+                    <th>文件大小</th>
+                    <th>传输进度</th>
+                    <th>传输状态</th>
+                    <th>发送方</th>
+                    <th>接收方</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <div class="tips" style="text-align: center" id="null">数据为空</div>
+        </div>
+    </div>
+{% endblock %}

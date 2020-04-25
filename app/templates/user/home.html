@@ -1,0 +1,163 @@
+{% extends "base/user_base.html" %}
+
+{% block more_style %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/user/home.css') }}"/>
+{% endblock %}
+
+{% block more_script %}
+    <script src="{{ url_for('static',filename='js/user/home.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="layui-anim layui-anim-scaleSpring">
+        <div class="container" style="border-bottom: 0;">
+            <h1>
+                <span>FILE TRANSFER - 个人主页</span>
+            </h1>
+        </div>
+        <div class="container">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+
+                <ul class="layui-tab-title">
+                    <li class="layui-this">个人信息</li>
+                    <li>修改信息</li>
+                    <li>修改密码</li>
+                </ul>
+
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <form class="layui-form" id="show">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-username"> 用户名:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input autocomplete="off" class="layui-input disabled"
+                                           value="{{ user.sub }}" disabled>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-auz"> 权限:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input autocomplete="off" class="layui-input disabled"
+                                           value="{{ user.power }}" disabled>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-cellphone"> 手机号:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input name="phone" autocomplete="off" class="layui-input disabled"
+                                           id="phone-ipt" value="{{ user.phone }}" disabled>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-email"> 邮箱地址:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input name="email" autocomplete="off" class="layui-input disabled"
+                                           value="{{ user.email }}" disabled>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-tips"> 自我介绍:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input name="intro" autocomplete="off" class="layui-input disabled"
+                                           value="{{ user.intro }}" disabled>
+                                </div>
+                            </div>
+                            <div class="tips">欢迎使用实时文件传输系统，以上是您的个人信息。</div>
+                        </form>
+                    </div>
+
+                    <div class="layui-tab-item">
+                        <form class="layui-form" id="profile-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-cellphone"> 手机号:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input name="phone" autocomplete="off" class="layui-input" lay-verify="phone"
+                                           id="phone-ipt" value="{{ user.phone }}" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-email"> 邮箱地址:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input name="email" autocomplete="off" class="layui-input" lay-verify="email"
+                                           value="{{ user.email }}" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-tips"> 自我介绍:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                        <textarea name="intro" placeholder="请输入内容" lay-verify="required"
+                                                  class="layui-textarea" required>{{ user.intro }}</textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" lay-submit lay-filter="profile-submit">确 认
+                                    </button>
+                                    <button type="reset" class="layui-btn layui-btn-primary back-btn">重 置</button>
+                                </div>
+                            </div>
+                            <div class="tips">您可以修改自己的个人信息。</div>
+                        </form>
+                    </div>
+
+                    <div class="layui-tab-item">
+                        <form class="layui-form" id="pwd-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-key"> 原密码:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="old_pwd" placeholder="请输入原来的密码" lay-verify="pwd"
+                                           autocomplete="off" class="layui-input" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-key"> 新密码:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="new_pwd" placeholder="请输入新的密码" lay-verify="pwd"
+                                           autocomplete="off" class="layui-input" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-key"> 确认密码:</i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="re_pwd" placeholder="请再次输入新的密码" lay-verify="pwd"
+                                           autocomplete="off" class="layui-input" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="button" class="layui-btn" lay-submit lay-filter="pwd-submit">确 认
+                                    </button>
+                                    <button type="reset" class="layui-btn layui-btn-primary back-btn">重 置</button>
+                                </div>
+                            </div>
+                            <div class="tips">默认密码为"123456"</div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

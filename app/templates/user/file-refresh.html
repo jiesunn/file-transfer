@@ -1,0 +1,17 @@
+{% extends "base/user_base.html" %}
+
+{% block more_script %}
+    <script>
+        $(function () {
+            setInterval(function () {
+                location.reload();
+            }, 1000);
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 style="color: #B22222;">您已打开一个home页面，1s后将刷新重试</h1>
+    </div>
+{% endblock %}

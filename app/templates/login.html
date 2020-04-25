@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件传输系统 - 登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="{{ url_for('static', filename='js/lib/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
+</head>
+
+<body>
+
+<div class="info" id="info" style="display: none;">
+    <div class="msg" id="msg"></div>
+</div>
+
+<div class="main">
+    <h1>文件传输系统</h1>
+    <form id="login-form">
+        <input id="sub" type="text" name="sub" placeholder="用户名" autocomplete="off" required="" />
+        <input id="pwd" type="password" name="pwd" placeholder="密码" autocomplete="off" required="" />
+        <input id="login" type="submit" value="登录">
+    </form>
+    <iframe id="rfFrame" name="rfFrame" src="about:blank" style="display:none;"></iframe>
+</div>
+<div class="footer">
+    <p>
+        首次登录？<a href="/login/auth">openID 授权认证</a>
+    </p>
+</div>
+</body>
+</html>

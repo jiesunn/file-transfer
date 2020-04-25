@@ -1,0 +1,193 @@
+.content {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.layui-progress {
+    margin-bottom: 10px;
+}
+
+#receive {
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.header, .bottom, .show {
+    width: 450px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.header {
+    font-weight: bold;
+    text-align: center;
+    color: #696969;
+    line-height: 1;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.bottom {
+    height: 30px;
+}
+
+.show {
+    border-top: none;
+    border-bottom: none;
+    background: #fbfbfb;
+    height: 600px;
+    overflow-x: hidden; /*x轴禁止滚动*/
+    overflow-y: scroll; /*y轴滚动*/
+}
+
+.show::-webkit-scrollbar {
+    display: none; /*隐藏滚动条*/
+}
+
+.show li {
+    list-style: none;
+    padding: 10px;
+    height: 60px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: left;
+    background: #FFFFFF;
+    border-bottom: #CCCCCC 1px solid;
+    border-radius: 5px;
+}
+
+.show li:hover, .show li:active {
+    border-bottom: #000000 1px solid;
+}
+
+.show li .title {
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.show li .desc {
+    float: left;
+    font-size: 12px;
+}
+
+.show li .file-msg {
+    float: right;
+    font-size: 12px;
+}
+
+.show error {
+    color: #B22222;
+}
+
+.show success {
+    color: #00b269;
+}
+
+#send, #receive {
+    display: inline-block;
+}
+
+.fileDescRes, .fileDataRes {
+    margin-left: 3px;
+    height: 20px;
+    width: 35px;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.fileDescRes.accept {
+    border: 1px #00b269 solid;
+    color: #00b269;
+}
+
+.fileDescRes.accept:hover, .fileDescRes.accept:active {
+    background: #00b269;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.fileDescRes.refuse {
+    border: 1px #B22222 solid;
+    color: #B22222;
+}
+
+.fileDescRes.refuse:hover, .fileDescRes.refuse:active {
+    background: #B22222;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.fileDataRes.accept {
+    border: 1px #00b269 solid;
+    color: #00b269;
+}
+
+.fileDataRes.accept:hover, .fileDataRes.accept:active {
+    background: #00b269;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.fileDataRes.refuse {
+    border: 1px #B22222 solid;
+    color: #B22222;
+}
+
+.fileDataRes.refuse:hover, .fileDataRes.refuse:active {
+    background: #B22222;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 5px;
+    display: inline-block;
+    background: #23b260;
+    color: #FFFFFF;
+    border: 1px solid #23b260;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.btn:hover {
+    background: #2E8B57;
+    border: 1px solid #2E8B57;
+    cursor: pointer;
+}
+
+.fileinput-button, .showFileName, .receiverIpt, .sendFileBtn {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.showFileName {
+    padding: 5px 0;
+    display: inline-block;
+    background: #FFFFFF;
+    color: #696969;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 15px;
+    width: 120px;
+    text-align: left;
+}
+
+.receiverIpt {
+    padding: 2px 8px;
+    height: 20px;
+    vertical-align: middle;
+    letter-spacing: 1px;
+    border: 1px solid #CCCCCC;
+}
+
+input {
+    width: 120px;
+}

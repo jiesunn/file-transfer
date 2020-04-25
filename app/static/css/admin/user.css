@@ -1,0 +1,20 @@
+#page {
+    text-align: center;
+}
+
+.layui-form-mid {
+    padding: 0 !important;
+}
+
+.layui-form-switch {
+    margin-top: 0;
+}
+
+.update, .submit {
+    padding: 0 7px;
+    height: 25px;
+}
+
+.layui-layer-btn {
+    text-align: center !important;
+}

@@ -1,0 +1,9 @@
+﻿.layui-form i {
+    width:25px;
+    text-align: left;
+}
+
+.layui-form-label {
+    padding: 9px 0;
+    width: auto;
+}
