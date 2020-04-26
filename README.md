@@ -1,4 +1,4 @@
-# 基于WebSocket的实时文件传输应用
+# 基于WebSocket的实时文件传输系统
 
 ### 技术要点
 
@@ -14,7 +14,7 @@
 4. 如何保障传输（流量控制、异常检测）
 5. 如何断点续传
 
-### 功能实现
+### 传输功能实现
 
 **下载链接：**
 - 为了通用性，改回Window.open ，先打开新标签页再下载再关闭新标签页
@@ -123,13 +123,21 @@ fix：https://github.com/eventlet/eventlet/pull/531
 - 8位也就是1字节，chr转字符
 - 把字符数组转为字符串
 
-### 依赖包版本
+### 后台管理
+
+- 用户管理（权限and信息管理）
+- 请求日志（每个请求结束后记录log到redis hash，key为incr date，然后通过定时任务落库）
+- 实时监控（轮询redis）
+
+### 系统部署
+
+#### 依赖包版本
 
 > requirements.txt
 
-### 环境搭建（具体看Dockerfile）
+#### 环境搭建（具体看Dockerfile）
 
 > Docker + Alpine + Flask + Gunicorn
 
-### 构建项目
+#### 构建项目
 > ./rebuild.sh
