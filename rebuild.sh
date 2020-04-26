@@ -32,4 +32,7 @@ docker stop file-transfer
 docker container rm file-transfer
 docker image rm flask:latest
 docker build -t flask .
-docker run -d -p 8000:8000 -v ${work_path}/app:/usr/src/app --name file-transfer flask
+docker run -d -p 8000:8000 \
+  -v ${work_path}/app:/usr/src/app \
+  -v ${work_path}/log:/usr/src/log \
+  --name file-transfer flask
