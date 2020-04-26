@@ -305,7 +305,8 @@ $(function () {
             setFileViewMsg(file.id, msg, false);
         }
         if (file.start === 0) {
-            window.open('/file/download/' + file.id);
+            //window.open('/file/download/' + file.id);
+            $("#ifile").attr('src', '/file/download/' + file.id)
             console.log("window.open('/file/download/" + file.id + "')");
         }
         receiveFile.curLoaded = file.start;

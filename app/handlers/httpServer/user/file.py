@@ -44,11 +44,11 @@ def generate_download(file_id=''):
                 return '文件不存在'
             if desc_new.state == 0:
                 count += 1
-            if desc_new.state == -1 or count >= 100:
+            if desc_new.state == -1 or count >= 10:
                 desc_new.state = -1
                 desc_new.set_desc()
                 break
-            time.sleep(0.1)
+            time.sleep(1)
 
     response = Response(generate(), content_type='application/octet-stream')
     response.headers['Content-disposition'] = 'attachment; filename=%s' % filename

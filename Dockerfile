@@ -4,7 +4,7 @@ LABEL maintainer="lilijie@corp.netease.com"
 
 # 创建所需目录
 RUN mkdir -p /usr/src/app  && \
-    mkdir -p /var/log/gunicorn
+    mkdir -p /usr/src/log
 
 # 工作路径
 WORKDIR /usr/src/app

@@ -27,7 +27,7 @@ class DevelopmentConfig(Config):
     REDIS_POOL = {
         'host': REDIS_HOST,
         'port': REDIS_PORT,
-        'socket_timeout': 1,
+        'socket_timeout': 5,
         'socket_connect_timeout': 2,
         'max_connections': 5,
         'decode_responses': True,
@@ -42,10 +42,10 @@ class DevelopmentConfig(Config):
         'password': 'file-transfer',
         'database': 'file_transfer',
         'charset': 'utf8',
-        'maxconnections': 6,  # 连接池允许的最大连接数，0和None表示不限制连接数
-        'mincached': 2,  # 初始化时，链接池中至少创建的空闲的链接，0表示不创建
-        'maxcached': 5,  # 链接池中最多闲置的链接，0和None不限制
-        'maxshared': 3,
+        'maxconnections': 6,  # 连接池允许的最大连接数
+        'mincached': 2,  # 初始化时，链接池中至少创建的空闲的链接
+        'maxcached': 5,  # 链接池中最多闲置的链接
+        'maxshared': 3,  # 链接池中最多共享的链接
     }
 
     # Session

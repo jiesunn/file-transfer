@@ -1,6 +1,6 @@
 .idea/
+log/
 redisData/
 mysql/
-app/cron.log
 **/__pycache__/
 **/.DS_Store
