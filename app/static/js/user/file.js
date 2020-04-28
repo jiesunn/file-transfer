@@ -13,8 +13,16 @@ $(function () {
 
     // 发送包大小计时器
     let sizeTimer = [], sizeCount = [],
+        clearSizeTimer = function (fileID) {
+            delete sizeCount[fileID];
+            clearInterval(sizeTimer[fileID]);
+        },
         setSizeTimer = function (fileID) {
             let sendFile = sendFileList[fileID];
+            if (!sendFile) {
+                clearSizeTimer(fileID);
+                return;
+            }
             sizeCount[fileID] = 0;
             sizeTimer[fileID] = setInterval(function () {
                 sizeCount[fileID]++;
@@ -23,13 +31,13 @@ $(function () {
                 console.log(fileID + " reduce: " + sendFile.curSize);
             }, sizeTimeout);
         },
-        clearSizeTimer = function (fileID) {
-            delete sizeCount[fileID];
-            clearInterval(sizeTimer[fileID]);
-        },
         controlSize = function (fileID) {
-            let sendFile = sendFileList[fileID],
-                packetSize = sendFile.curSize;
+            let sendFile = sendFileList[fileID];
+            if (!sendFile) {
+                clearSizeTimer(fileID);
+                return;
+            }
+            let packetSize = sendFile.curSize;
             if (fileID in sizeCount && sizeCount[fileID] <= 1) {
                 packetSize = sizeCount[fileID] === 0 ? sendFile.curSize * 2 : sendFile.curSize + minSize;
                 sendFile.curSize = packetSize > maxSize ? maxSize : packetSize;
