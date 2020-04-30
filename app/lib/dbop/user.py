@@ -1,6 +1,9 @@
 # coding: utf-8
 
 import datetime
+
+import pymysql
+
 from . import MysqlPool
 
 
@@ -18,6 +21,8 @@ def create_user(pid, sub, pwd):
            'VALUE (%s, %s, %s, %s)')
     now = datetime.datetime.now()
     user_id = mp.insert(sql, [pid, sub, pwd, now])
+    if not user_id:
+        return False
     return {'id': user_id, 'pid': pid,
             'sub': sub, 'pwd': pwd,
             'create_time': now
@@ -120,6 +125,20 @@ def change_user_power(sub, pid):
     mp = MysqlPool()
     sql = 'UPDATE users SET pid=%s WHERE sub=%s'
     res = mp.update(sql, [pid, sub])
+    if not res:
+        return False
+    return res
+
+
+def delete_user(sub):
+    """
+    删除用户
+    :param sub:
+    :return:
+    """
+    mp = MysqlPool()
+    sql = 'DELETE FROM users WHERE sub=%s'
+    res = mp.delete(sql, [sub])
     if not res:
         return False
     return res

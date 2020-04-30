@@ -59,6 +59,14 @@ class DevelopmentConfig(Config):
     SESSION_REDIS = StrictRedis(host=REDIS_HOST, port=REDIS_PORT)
 
 
+class TestingConfig(Config):
+    """
+    测试环境
+    """
+    DEBUG = True
+    TESTING = True
+
+
 class ProductionConfig(Config):
     """
     生产环境
@@ -68,5 +76,6 @@ class ProductionConfig(Config):
 
 config = {
     'development': DevelopmentConfig,
+    'testing': TestingConfig,
     'production': ProductionConfig,
 }

@@ -53,6 +53,18 @@ class User(Base):
             return False
         return self.load(data)
 
+    def delete(self):
+        """
+        删除用户
+        :return:
+        """
+        if not self.sub:
+            return False
+        res = dbop.delete_user(self.sub)
+        if not res:
+            return False
+        return res
+
     def get_by_sub(self, sub):
         """
         通过sub的得到user

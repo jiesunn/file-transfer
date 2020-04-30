@@ -125,9 +125,14 @@ class MysqlPool(object):
         :return:
         """
         conn, cursor = self.connect()
-        row = cursor.execute(sql, args)
-        conn.commit()
-        self.connect_close(conn, cursor)
+        try:
+            row = cursor.execute(sql, args)
+            conn.commit()
+        except pymysql.err.Error:
+            conn.rollback()
+            return False
+        finally:
+            self.connect_close(conn, cursor)
         return row
 
     def execute_many(self, sql, args):
