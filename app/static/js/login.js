@@ -28,7 +28,7 @@ $(function () {
             success: function (data) {
                 if (data.code === 200) {
                     show_msg(data.msg, 'success')
-                    location.href = "/user"
+                    location.href = "/home"
                 } else {
                     show_msg(data.msg, 'error')
                 }
